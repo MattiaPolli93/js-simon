@@ -13,10 +13,25 @@ while (computerNumbers.length < 5) {
 
 alert(`Hello! Here are five random numbers: ${computerNumbers.join(" - ")}. Try to memorize them and please DO NOT copy them down, otherwise you would be cheating...`);
 
-// Asking user to insert the above five numbers - Timing function
+// Asking user to insert the above five numbers and storing them inside an array (30-second timing function)
 var userNumbers = [];
 
 setTimeout(function() {
-    // Prompt
+    // Asking user to insert the five numbers
+    while (userNumbers.length < 5) {
+        
+        // Making sure user inserts numbers
+        do {
+            var userNumber = parseInt(prompt("Insert number:"));
+        } while (isNaN(userNumber));
 
-}, 30000);
+        // Making sure user does not insert the same numbers twice
+        if (isNumberInArray(userNumber, userNumbers)) {
+            alert("Invalid! You have already chosen this number...");
+        } else {
+            userNumbers.push(userNumber);
+        }
+    }
+
+    // Temporarily 3000 
+}, 3000);
