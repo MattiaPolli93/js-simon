@@ -15,6 +15,7 @@ alert(`Hello! Here are five random numbers: ${computerNumbers.join(" - ")}. Try 
 
 // Asking user to insert the above five numbers and storing them inside an array (30-second timing function)
 var userNumbers = [];
+var correctNumbers = [];
 
 setTimeout(function() {
     // Asking user to insert the five numbers
@@ -22,8 +23,8 @@ setTimeout(function() {
         
         // Making sure user inserts numbers
         do {
-            var userNumber = parseInt(prompt("Insert number:"));
-        } while (isNaN(userNumber));
+            var userNumber = parseInt(prompt("Insert number (between 1 and 1000):"));
+        } while (isNaN(userNumber) || (userNumber <= 0 || userNumber > 1000));
 
         // Making sure user does not insert the same numbers twice
         if (isNumberInArray(userNumber, userNumbers)) {
@@ -33,5 +34,23 @@ setTimeout(function() {
         }
     }
 
-    // Temporarily 3000 
-}, 3000);
+    // Making sure the guessed numbers are the correct ones
+    for (var i = 0; i < computerNumbers.length; i++) {
+        if (isNumberInArray(userNumbers[i], computerNumbers)) {
+            correctNumbers.push(computerNumbers[i]);
+        }
+    }
+
+    // Displaying guessed numbers
+    if (correctNumbers.length == 5) {
+        alert("Congrats, you got all the numbers!");
+
+    } else if (correctNumbers.length != 5) {
+        alert(`You guessed ${correctNumbers.length} number(s) correctly: ${correctNumbers.join(" - ")}`);
+    } 
+    
+    // Displaying in console
+    console.log(userNumbers);
+    console.log(computerNumbers);
+
+}, 30000);
