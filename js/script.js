@@ -11,4 +11,12 @@ while (computerNumbers.length < 5) {
     }
 }
 
-alert(computerNumbers);
+alert(`Hello! Here are five random numbers: ${computerNumbers.join(" - ")}. Try to memorize them and please DO NOT copy them down, otherwise you would be cheating...`);
+
+// Asking user to insert the above five numbers - Timing function
+var userNumbers = [];
+
+setTimeout(function() {
+    // Prompt
+
+}, 30000);
